@@ -1,3 +1,13 @@
+<?php
+require_once __DIR__ . '/classes/Cibo.php';
+require_once __DIR__ . '/classes/Gioco.php';
+require_once __DIR__ . '/classes/Cuccia.php';
+require_once __DIR__ . '/classes/Dogs.php';
+require_once __DIR__ . '/classes/Cats.php';
+require_once __DIR__ . '/db/prodotti.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 
@@ -18,9 +28,36 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col">
 
-      </div>
+      <?php
+
+      foreach ($prodotti as $prodotto) { ?>
+        <div class="col-4 my-3">
+          <div class="card" style="width: 18rem;">
+            <img src="<?php echo ($prodotto->getImg()) ?>" class="card-img-top" alt="img">
+            <div class="card-body">
+              <h5 class="card-title"><?php echo ($prodotto->getNome()) ?></h5>
+              <p class="card-text"><?php echo ($prodotto->getDescrizione()) ?></p>
+              <?php
+              if ($prodotto->getCategoria() === "cane") {
+                $animale = new Dogs("piccola", 7, true); ?>
+                <div><?php echo $animale->getIcon() ?></div>
+              <?php
+              } elseif ($prodotto->getCategoria() === "gatto") {
+                $animale = new Cats("piccola", 7, true); ?>
+                <div><?php echo $animale->getIcon() ?></div>
+              <?php
+              }
+              ?>
+            </div>
+          </div>
+        </div>
+
+      <?php
+      }
+      ?>
+
+
     </div>
   </div>
 
