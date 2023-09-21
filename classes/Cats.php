@@ -1,7 +1,9 @@
 <?php
 require_once __DIR__ . '/Category.php';
+require_once __DIR__ . '/../traits/Gender.php';
 
 class Cats extends Category {
+	use Gender;
 
   public function __construct($taglia, $eta, $sterilizzato) {
 

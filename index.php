@@ -38,17 +38,25 @@ require_once __DIR__ . '/db/prodotti.php';
             <div class="card-body">
               <h5 class="card-title"><?php echo ($prodotto->getNome()) ?></h5>
               <p class="card-text"><?php echo ($prodotto->getDescrizione()) ?></p>
-              <?php
-              if ($prodotto->getCategoria() === "cane") {
-                $animale = new Dogs("piccola", 7, true); ?>
-                <div><?php echo $animale->getIcon() ?></div>
-              <?php
-              } elseif ($prodotto->getCategoria() === "gatto") {
-                $animale = new Cats("piccola", 7, true); ?>
-                <div><?php echo $animale->getIcon() ?></div>
-              <?php
-              }
-              ?>
+              <div class="d-flex gap-2">
+                <?php
+                if ($prodotto->getCategoria() === "cane") {
+                  $animale = new Dogs("piccola", 7, true);
+                  $animale->setGender(Dogs::$male)
+                ?>
+                  <div><?php echo $animale->getIcon() ?></div>
+                  <div><?php echo $animale->getGender() ?></div>
+                <?php
+                } elseif ($prodotto->getCategoria() === "gatto") {
+                  $animale = new Cats("piccola", 7, true);
+                  $animale->setGender(Cats::$female)
+                ?>
+                  <div><?php echo $animale->getIcon() ?></div>
+                  <div><?php echo $animale->getGender() ?></div>
+                <?php
+                }
+                ?>
+              </div>
             </div>
           </div>
         </div>
