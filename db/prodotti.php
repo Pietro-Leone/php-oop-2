@@ -19,4 +19,5 @@ $prodotti = [
   new Gioco("peluches", "gatto", "peluches per gatti", "9,99", "https://www.pulimarketdistribuzione.it/wp-content/plugins/widgetkit/cache/Petfood-7e91aa8857261f02dc8cc8f2b6e766b7.jpg"),
   new Gioco("palle", "gatto", "palle per gatti", "9,99", "https://www.pulimarketdistribuzione.it/wp-content/plugins/widgetkit/cache/Petfood-7e91aa8857261f02dc8cc8f2b6e766b7.jpg"),
   new Gioco("corda", "gatto", "corda per gatti", "9,99", "https://www.pulimarketdistribuzione.it/wp-content/plugins/widgetkit/cache/Petfood-7e91aa8857261f02dc8cc8f2b6e766b7.jpg"),
+  new Gioco("palla", "", "palla per tutti gli animali", "9,99", "https://www.pulimarketdistribuzione.it/wp-content/plugins/widgetkit/cache/Petfood-7e91aa8857261f02dc8cc8f2b6e766b7.jpg"),
 ];

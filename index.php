@@ -40,20 +40,29 @@ require_once __DIR__ . '/db/prodotti.php';
               <p class="card-text"><?php echo ($prodotto->getDescrizione()) ?></p>
               <div class="d-flex gap-2">
                 <?php
-                if ($prodotto->getCategoria() === "cane") {
-                  $animale = new Dogs("piccola", 7, true);
-                  $animale->setGender(Dogs::$male)
+                try {
+                  if ($prodotto->getCategoria() === "cane") {
+                    $animale = new Dogs("piccola", 7, true);
+                    $animale->setGender(Dogs::$male);
                 ?>
-                  <div><?php echo $animale->getIcon() ?></div>
-                  <div><?php echo $animale->getGender() ?></div>
+                    <div><?php echo $animale->getIcon() ?></div>
+                    <div><?php echo $animale->getGender() ?></div>
+                  <?php
+                  } elseif ($prodotto->getCategoria() === "gatto") {
+                    $animale = new Cats("piccola", 7, true);
+                    $animale->setGender(Cats::$female)
+                  ?>
+                    <div><?php echo $animale->getIcon() ?></div>
+                    <div><?php echo $animale->getGender() ?></div>
                 <?php
-                } elseif ($prodotto->getCategoria() === "gatto") {
-                  $animale = new Cats("piccola", 7, true);
-                  $animale->setGender(Cats::$female)
-                ?>
-                  <div><?php echo $animale->getIcon() ?></div>
-                  <div><?php echo $animale->getGender() ?></div>
-                <?php
+                  } else {
+                    throw new Exception('
+                    <i class="fa-solid fa-dog"></i>
+                    <i class="fa-solid fa-cat"></i>
+                    ');
+                  }
+                } catch (Exception $other) {
+                  echo $other->getMessage();
                 }
                 ?>
               </div>
